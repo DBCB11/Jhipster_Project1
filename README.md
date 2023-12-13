@@ -1,247 +1,74 @@
-# QuanLyLopHoc
+# Jhipster - project 1
+JHipster là một nền tảng phát triển để nhanh chóng tạo, phát triển và triển khai các ứng dụng web hiện đại và kiến ​​trúc vi dịch vụ
+# Cài đặt jhipster
+1. Cài đặt [Java](https://adoptium.net/temurin/releases/?version=11), [Node.js](https://nodejs.org/en), [Git](https://git-scm.com/)
+2. Cài đặt Jhipster bằng cách chạy câu lệnh `npm install -g generator-jhipster` trong cửa sổ cmd.
+3. Tạo một thư mục mới và đi vào trong nó.
+4. Mở cửa sổ cmd trong thư mục đó và chạy lệnh `jhipster`
 
-This application was generated using JHipster 8.0.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.0.0](https://www.jhipster.tech/documentation-archive/v8.0.0).
+# Demo tạo 1 project bằng Jhipster sử dụng MySQL
+1. Tạo project QuanLyLopHoc:
 
-## Project Structure
+Dưới đây là các cài đặt cho project. Ở đây mình sẽ sử dụng môi trường cho database là `H2 with disk-based persistence`, việc mình không sử dụng MySQL cho môi trường database của mình là vì đây chỉ là một bản thử, một dự án chạy thử nên mình đã ưu tiên sử dụng `H2 with disk-based persistence`.
 
-Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
+![img](<Screenshot (627).png>)
 
-In the project root, JHipster generates configuration files for tools like git, prettier, eslint, husky, and others that are well known and you can find references in the web.
+2. Sau khi jhipster build xong chương trình. Mình đã dùng lệnh `mvnw` để khởi chạy thử và kiểm tra xem có lỗi gì không.
 
-`/src/*` structure follows default Java structure.
+![img](<Screenshot (628).png>)
 
-- `.yo-rc.json` - Yeoman configuration file
-  JHipster configuration is stored in this file at `generator-jhipster` key. You may find `generator-jhipster-*` for specific blueprints configuration.
-- `.yo-resolve` (optional) - Yeoman conflict resolver
-  Allows to use a specific action when conflicts are found skipping prompts for files that matches a pattern. Each line should match `[pattern] [action]` with pattern been a [Minimatch](https://github.com/isaacs/minimatch#minimatch) pattern and action been one of skip (default if ommited) or force. Lines starting with `#` are considered comments and are ignored.
-- `.jhipster/*.json` - JHipster entity configuration files
+Mình đã bị 3 lỗi nhưng đều là cùng liên quan đến `method when` nên sẽ chỉ cần sửa trong 1 file:
 
-- `npmw` - wrapper to use locally installed npm.
-  JHipster installs Node and npm locally using the build tool by default. This wrapper makes sure npm is installed locally and uses it avoiding some differences different versions can cause. By using `./npmw` instead of the traditional `npm` you can configure a Node-less environment to develop or test your application.
-- `/src/main/docker` - Docker configurations for the application and services that the application depends on
+![img](<Screenshot (629).png>)
 
-## Development
+3. Tạo các thực thể 
 
-Before you can build this project, you must install and configure the following dependencies on your machine:
+Định nghĩa tập thực thể trong [JDL Studio](https://start.jhipster.tech/jdl-studio/)
 
-1. [Node.js][]: We use Node to run a development web server and build the project.
-   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
+![img](<Screenshot (630).png>)
 
-After installing Node, you should be able to run the following command to install development tools.
-You will only need to run this command when dependencies change in [package.json](package.json).
+Tải xuống và copy vào trong thư mục của dự án
 
-```
-npm install
-```
+Mở cửa sổ cmd trong thư mục dự án và chạy lệnh `jhipster jdl 'your_file_name'.jdl` để cài JDL vào dự án jhipster của mình.
 
-We use npm scripts and [Webpack][] as our build system.
+![img](<Screenshot (631).png>)
 
-Run the following commands in two separate terminals to create a blissful development experience where your browser
-auto-refreshes when files change on your hard drive.
+Ấn a để overwrite tất cả
 
-```
-./mvnw
-npm start
-```
+![img](<Screenshot (632).png>)
 
-Npm is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
-specifying a newer version in [package.json](package.json). You can also run `npm update` and `npm install` to manage dependencies.
-Add the `help` flag on any command to see how you can use it. For example, `npm help update`.
+4. Kiểm thử dự án
 
-The `npm run` command will list all of the scripts available to run for this project.
+Chạy lệnh mvnw trong cửa sổ cmd của thư mục dự án
 
-### PWA Support
+Nếu không còn lỗi nào thì sẽ có dòng như sau sẽ được hiện ra:
 
-JHipster ships with PWA (Progressive Web App) support, and it's turned off by default. One of the main components of a PWA is a service worker.
+![img](<Screenshot (634).png>)
 
-The service worker initialization code is commented out by default. To enable it, uncomment the following code in `src/main/webapp/index.html`:
+Sau đó chạy lệnh `npm start` để khởi động giao diện
 
-```html
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').then(function () {
-      console.log('Service Worker Registered');
-    });
-  }
-</script>
-```
+Hình ảnh dự án minh họa
 
-Note: [Workbox](https://developers.google.com/web/tools/workbox/) powers JHipster's service worker. It dynamically generates the `service-worker.js` file.
+![img](<Screenshot (635).png>)
 
-### Managing dependencies
+![img](<Screenshot (636).png>)
 
-For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
+![img](<Screenshot (637).png>)
 
-```
-npm install --save --save-exact leaflet
-```
+![img](<Screenshot (638).png>)
 
-To benefit from TypeScript type definitions from [DefinitelyTyped][] repository in development, you would run following command:
+# Ưu điểm và nhược điểm
+Ở đây mình đã rút ra được một số ưu điểm và nhược điểm trên phương diện khi mới chỉ là một sinh viên năm 3, chưa biết quá nhiều về lập trình.
 
-```
-npm install --save-dev --save-exact @types/leaflet
-```
+## Ưu điểm
+1. Giúp tạo ra một ứng dụng cơ bản nhanh chóng, tiết kiệm thời gian thông qua các mô hình được quyết định sẵn.
+1. Mình có thể học từ mã nguồn được sinh ra tự động
+1. Tích hợp sẵn các công nghệ phổ biến như Spring Boot, Angular, React, ...
+1.  Có sẵn những tài liệu phong phú, có một cộng đồng đông đảo giúp đỡ.
+1. Đặc biệt Jhipster hỗ trợ các công cụ quản lý phiên bản CI/CD có thể giúp mình - một người mới - làm quen với lĩnh vực lập trình.
 
-Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
-Note: There are still a few other things remaining to do for Leaflet that we won't detail here.
-
-For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
-
-## Building for production
-
-### Packaging as jar
-
-To build the final jar and optimize the QuanLyLopHoc application for production, run:
-
-```
-./mvnw -Pprod clean verify
-```
-
-This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
-To ensure everything worked, run:
-
-```
-java -jar target/*.jar
-```
-
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
-
-Refer to [Using JHipster in production][] for more details.
-
-### Packaging as war
-
-To package your application as a war in order to deploy it to an application server, run:
-
-```
-./mvnw -Pprod,war clean verify
-```
-
-### JHipster Control Center
-
-JHipster Control Center can help you manage and control your application(s). You can start a local control center server (accessible on http://localhost:7419) with:
-
-```
-docker compose -f src/main/docker/jhipster-control-center.yml up
-```
-
-## Testing
-
-### Spring Boot tests
-
-To launch your application's tests, run:
-
-```
-./mvnw verify
-```
-
-### Client tests
-
-Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
-
-```
-npm test
-```
-
-UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`) in a second one.
-
-#### Lighthouse audits
-
-You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
-You should only run the audits when your application is packaged with the production profile.
-The lighthouse report is created in `target/cypress/lhreport.html`
-
-## Others
-
-### Code quality using Sonar
-
-Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:
-
-```
-docker compose -f src/main/docker/sonar.yml up -d
-```
-
-Note: we have turned off forced authentication redirect for UI in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
-
-You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
-
-Then, run a Sonar analysis:
-
-```
-./mvnw -Pprod clean verify sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
-```
-
-If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
-
-```
-./mvnw initialize sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
-```
-
-Additionally, Instead of passing `sonar.password` and `sonar.login` as CLI arguments, these parameters can be configured from [sonar-project.properties](sonar-project.properties) as shown below:
-
-```
-sonar.login=admin
-sonar.password=admin
-```
-
-For more information, refer to the [Code quality page][].
-
-### Using Docker to simplify development (optional)
-
-You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
-
-For example, to start a mysql database in a docker container, run:
-
-```
-docker compose -f src/main/docker/mysql.yml up -d
-```
-
-To stop it and remove the container, run:
-
-```
-docker compose -f src/main/docker/mysql.yml down
-```
-
-You can also fully dockerize your application and all the services that it depends on.
-To achieve this, first build a docker image of your app by running:
-
-```
-npm run java:docker
-```
-
-Or build a arm64 docker image when using an arm64 processor os like MacOS with M1 processor family running:
-
-```
-npm run java:docker:arm64
-```
-
-Then run:
-
-```
-docker compose -f src/main/docker/app.yml up -d
-```
-
-When running Docker Desktop on MacOS Big Sur or later, consider enabling experimental `Use the new Virtualization framework` for better processing performance ([disk access performance is worse](https://github.com/docker/roadmap/issues/7)).
-
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
-
-## Continuous Integration (optional)
-
-To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
-
-[JHipster Homepage and latest documentation]: https://www.jhipster.tech
-[JHipster 8.0.0 archive]: https://www.jhipster.tech/documentation-archive/v8.0.0
-[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.0.0/development/
-[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.0.0/docker-compose
-[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v8.0.0/production/
-[Running tests page]: https://www.jhipster.tech/documentation-archive/v8.0.0/running-tests/
-[Code quality page]: https://www.jhipster.tech/documentation-archive/v8.0.0/code-quality/
-[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v8.0.0/setting-up-ci/
-[Node.js]: https://nodejs.org/
-[NPM]: https://www.npmjs.com/
-[Webpack]: https://webpack.github.io/
-[BrowserSync]: https://www.browsersync.io/
-[Jest]: https://facebook.github.io/jest/
-[Cypress]: https://www.cypress.io/
-[Leaflet]: https://leafletjs.com/
-[DefinitelyTyped]: https://definitelytyped.org/
+## Nhược điểm
+1. Do tính năng đầy đủ và linh hoạt, khiến mình lúc đầu cảm thấy khá phức tạp.
+2. Ngoài ra việc sử dụng Jhipster đôi khi đòi hỏi một số hiểu biết với nền tảng và các công nghệ được sử dụng
+3. Đặc biệt, việc tinh chỉnh lúc đầu khá khiến mình mất thời gian vì mã nguồn được tự động sinh ra.
+4. Tuy Jhipster giúp tạo ra ứng dụng web, nhưng có thể trở nên phức tạp và có khả năng chứa đựng những tính năng không cần thiết. 
